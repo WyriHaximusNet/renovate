@@ -34,22 +34,7 @@ jobs:
           app-id: ${{ secrets.RENOVATE_BOT_CLIENT_ID }}
           private-key: ${{ secrets.RENOVATE_BOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-      - name: Self-hosted Renovate
-        uses: renovatebot/github-action@53bdcc4ec92f28e5023ac92356ea8bb45f8b807d # v43.0.15
+      - name: Renovate
+        uses: WyriHaximus/github-action-renovatebot@683bbe2fc72410414e15c8d46e16c908cef37b24 # v0.3.2
         with:
-          token: ${{ steps.app-token.outputs.token }}
-          mount-docker-socket: true
-        env:
-          RENOVATE_ALLOW_PLUGINS: true
-          RENOVATE_ALLOW_SCRIPTS: true
-          RENOVATE_ALLOWED_COMMANDS: "[\"git add .\"]"
-          RENOVATE_AUTODISCOVER: true
-          RENOVATE_BINARY_SOURCE: docker
-          RENOVATE_POST_UPGRADE_TASKS: "{\"commands\": [\"git add .\"], \"fileFilters\": [\"**/*\"], \"executionMode\": \"update\"}"
-          RENOVATE_DOCKER_CLI_OPTIONS: "-e=COMPOSER_IGNORE_PLATFORM_REQS=1"
-          RENOVATE_DRY_RUN: "null"
-          RENOVATE_IGNORE_PLUGINS: false
-          RENOVATE_IGNORE_SCRIPTS: false
-          LOG_LEVEL: info
-#          LOG_LEVEL: debug
-#          LOG_FORMAT: json
+          renovateAppToken: ${{ steps.app-token.outputs.token }}

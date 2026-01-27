@@ -35,6 +35,6 @@ jobs:
           private-key: ${{ secrets.RENOVATE_BOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
       - name: Renovate
-        uses: WyriHaximus/github-action-renovatebot@034bdda693a9ba13343d823a4b17cdaa16f9baba # v0.6.0
+        uses: WyriHaximus/github-action-renovatebot@210f8a2d336e703457739443f363de238c007976 # v0.6.2
         with:
           renovateAppToken: ${{ steps.app-token.outputs.token }}
